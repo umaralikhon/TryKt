@@ -1,5 +1,7 @@
 package com.example.trykt.nullsafety
 
+import com.example.trykt.functions.multiple
+
 fun main(){
 
     var temp:String? = testForNull();
@@ -8,9 +10,9 @@ fun main(){
     println(temp);
     println(size);
 
-
+    println(multiple(5,9));
 }
 
 fun testForNull() : String?{
-    return null;
+    return "Hello world";
 }
