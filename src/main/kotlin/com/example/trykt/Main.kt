@@ -13,7 +13,6 @@ fun main() {
     println("C: ${a + b}")
 
     val userJava = UserJava("veronica@java.com");
-//    println(userJava.email)
 
     var firstname: Any = "Veronica";
     println(firstname);
