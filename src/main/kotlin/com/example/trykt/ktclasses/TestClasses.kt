@@ -29,5 +29,19 @@ fun main() {
     println(empl.age);
 
     var user: Person = Person();
-    user
+    empl.salary=6000;
+    println("Salary: ${empl.salary}");
+
+    var customer: Customer = Customer( "Veronica", "Obedina", 20, 1, "veronica@example.com");
+    println("\n CUSTOMER");
+    println(customer.id);
+    println(customer.firstname);
+    println(customer.lastname);
+    println(customer.toString());
+
+    person1.showId(1);
+    customer.showId(customer.id);
+
+    var pers: Person = Customer("A", "B", 18, 1, "sagfdg");
+    println(pers);
 }

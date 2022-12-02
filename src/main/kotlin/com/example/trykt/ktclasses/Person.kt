@@ -30,4 +30,8 @@ open class Person constructor(firstname: String, lastname: String, age: Int) {
         this.lastname = lastname;
         this.age = age;
     }
+
+    open fun showId(id: Int){
+        println("Id: ${id}");
+    }
 }
