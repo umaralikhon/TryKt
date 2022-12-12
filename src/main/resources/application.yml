@@ -1,2 +1,16 @@
+spring:
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/try_kt'
+    username: postgres
+    password: 1111
+  jpa:
+    show-sql: on
+    generate-ddl: on
+    hibernate:
+      ddl-auto: 'update'
+    properties:
+      hibernate:
+        format_sql: true
+
 server:
-  port: 8001
+  port: 8000
