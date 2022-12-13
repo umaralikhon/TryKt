@@ -1,7 +1,9 @@
 package workout.weather.entity
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 class MainWeather {
 
     @JsonProperty("temp")
@@ -21,4 +23,10 @@ class MainWeather {
 
     @JsonProperty("humidity")
     var humidity: Int = 0;
+
+    @JsonProperty("sea_level")
+    var seaLevel: Int = 0;
+
+    @JsonProperty("grnd_level")
+    var grndLevel: Int = 0;
 }

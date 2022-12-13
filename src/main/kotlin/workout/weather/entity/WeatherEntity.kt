@@ -15,4 +15,8 @@ class WeatherEntity {
 
     @Column(name = "feels_like")
     var feelsLike: Int = 0;
+
+    override fun toString(): String {
+        return "WeatherEntity: ${id}, ${temp}, ${pressure}, ${humidity}, ${feelsLike}";
+    }
 }
