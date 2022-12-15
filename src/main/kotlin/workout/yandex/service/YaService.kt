@@ -8,4 +8,5 @@ interface YaService {
 
     fun findFromYandexByOrganisationName(yaRequest: YaRequest): YaResponse;
     fun saveYaData(yaRequest: YaRequest): YaData
+    fun findById(id: Long): YaData
 }

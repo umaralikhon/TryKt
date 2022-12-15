@@ -9,6 +9,7 @@ import workout.yandex.model.YaData
 import workout.yandex.model.YaRequest
 import workout.yandex.model.response.YaResponse
 import workout.yandex.repo.YaRepo
+import java.util.Optional
 
 @Service
 class YaServiceImpl(restTemplate: RestTemplate, yaConfig: YaConfig, yaRepo: YaRepo) : YaService {
@@ -36,7 +37,7 @@ class YaServiceImpl(restTemplate: RestTemplate, yaConfig: YaConfig, yaRepo: YaRe
                 HttpEntity.EMPTY,
                 YaResponse::class.java
             ).body!!;
-        }catch (ex:Exception){
+        } catch (ex: Exception) {
             return YaResponse(); //Empty response
         }
     }
@@ -122,28 +123,28 @@ class YaServiceImpl(restTemplate: RestTemplate, yaConfig: YaConfig, yaRepo: YaRe
             .get(0)
             .everyDay;
 
-        yaData.category = mutableListOf(
-            yaResponse
-                .features
-                .get(0)
-                .properties
-                .companyMetaData
-                .categories.get(0)
-                .name
-        );
+        val phoneList = yaResponse.features.get(0).properties.companyMetaData.phones;
+        val categories = yaResponse.features.get(0).properties.companyMetaData.categories;
 
+        for (phone in phoneList) {
+            yaData.phone.add(phone.formatted);
+        }
 
-        yaData.phone = mutableListOf(
-            yaResponse
-                .features
-                .get(0)
-                .properties
-                .companyMetaData
-                .phones.get(0)
-                .formatted
-        );
-
+        for (category in categories) {
+            yaData.category.add(category.name);
+        }
 
         return yaData;
+    }
+
+    override fun findById(id: Long): YaData {
+        val optional: Optional<YaData> = yaRepo.findById(id);
+
+        if (optional.isEmpty) {
+            logger.info { "Nothing found by ID: ${id}" }
+            throw Exception();
+        }
+
+        return optional.get();
     }
 }
