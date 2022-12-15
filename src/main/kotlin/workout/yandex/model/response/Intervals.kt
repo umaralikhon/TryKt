@@ -9,6 +9,8 @@ import java.time.LocalDateTime
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Intervals {
 
+    val timeFormat: String = "HH:mm:ss";
+
     @JsonProperty("from")
 //TODO:  @DateTimeFormat(style = "HH:mm:ss")
     var from: String = "";
