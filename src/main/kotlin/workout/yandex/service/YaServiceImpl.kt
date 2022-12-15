@@ -36,7 +36,7 @@ class YaServiceImpl(restTemplate: RestTemplate, yaConfig: YaConfig, yaRepo: YaRe
                 HttpEntity.EMPTY,
                 YaResponse::class.java
             ).body!!;
-        } catch (ex: Exception) {
+        }catch (ex:Exception){
             return YaResponse(); //Empty response
         }
     }
@@ -122,16 +122,16 @@ class YaServiceImpl(restTemplate: RestTemplate, yaConfig: YaConfig, yaRepo: YaRe
             .get(0)
             .everyDay;
 
-        yaData.category.add(
+        yaData.category = mutableListOf(
             yaResponse
                 .features
                 .get(0)
                 .properties
                 .companyMetaData
-                .categories
-                .get(0)
+                .categories.get(0)
                 .name
-        )
+        );
+
 
         yaData.phone = mutableListOf(
             yaResponse
